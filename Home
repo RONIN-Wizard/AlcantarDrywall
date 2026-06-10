@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alcantar Drywall LLC – Professional Drywall Contractor</title>
+  <meta name="description" content="Alcantar Drywall LLC – Expert drywall installation, finishing, and repair across New England. 10+ years of craftsmanship. Serving MA, NH, RI, and CT."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-light:   #5AAEDC;
+      --blue-mid:     #2E8BB5;
+      --blue-dark:    #0D5C7D;
+      --black:        #0A0A0A;
+      --charcoal:     #1C1C1C;
+      --white:        #FFFFFF;
+      --off-white:    #F5F8FB;
+      --gray-light:   #E3EDF4;
+      --gray-mid:     #94A8B5;
+      --text-body:    #2A3740;
+      --text-muted:   #5E7380;
+
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --radius:       4px;
+      --section-pad:  100px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body  {
+      font-family: var(--font-body);
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(90,174,220,.15);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 72px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px; text-decoration: none;
+    }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.55rem; font-weight: 700; letter-spacing: 0.03em;
+      color: var(--white); line-height: 1;
+    }
+    .nav-logo-text span { color: var(--blue-light); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: .85rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: rgba(255,255,255,.75);
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--blue-light); }
+    .nav-cta {
+      background: var(--blue-light); color: var(--black) !important;
+      padding: 10px 22px; border-radius: var(--radius);
+      font-weight: 600 !important; color: var(--black) !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-mid) !important; color: var(--white) !important; }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 72px;
+    }
+    /* Diagonal accent stripe */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(135deg,
+          transparent 0%,
+          transparent 55%,
+          rgba(90,174,220,.06) 55%,
+          rgba(90,174,220,.06) 65%,
+          transparent 65%
+        );
+      pointer-events: none;
+    }
+    /* Blueprint grid texture */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(90,174,220,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(90,174,220,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; padding: 80px 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: .85rem; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--blue-light);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 800; line-height: .92;
+      letter-spacing: -.01em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 28px;
+    }
+    .hero-title em { font-style: normal; color: var(--blue-light); }
+    .hero-desc {
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(255,255,255,.65); line-height: 1.75;
+      max-width: 420px; margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue-light); color: var(--black);
+      font-family: var(--font-display); font-size: 1.05rem;
+      font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      padding: 16px 32px; border-radius: var(--radius);
+      text-decoration: none; transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--blue-mid); color: var(--white); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.8);
+      font-family: var(--font-display); font-size: 1.05rem;
+      font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      padding: 16px 32px; border-radius: var(--radius);
+      text-decoration: none; transition: border-color .2s, color .2s, transform .15s;
+    }
+    .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); transform: translateY(-2px); }
+
+    /* Hero right – stats panel */
+    .hero-stats {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(90,174,220,.2);
+      border-radius: 8px;
+      padding: 44px 40px;
+    }
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stat-item {
+      padding: 28px 24px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-right: 1px solid rgba(255,255,255,.06);
+    }
+    .stat-item:nth-child(2n) { border-right: none; }
+    .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+    .stat-num {
+      font-family: var(--font-display); font-size: 3.2rem;
+      font-weight: 800; color: var(--blue-light); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: .78rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,.5);
+    }
+
+    /* Service states ribbon */
+    .states-ribbon {
+      background: var(--blue-light);
+      padding: 14px 32px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .states-ribbon-label {
+      font-family: var(--font-display); font-size: .8rem;
+      font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--black); opacity: .6;
+    }
+    .states-ribbon-states {
+      display: flex; gap: 32px; flex-wrap: wrap;
+    }
+    .state-badge {
+      font-family: var(--font-display); font-size: 1rem;
+      font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--black); display: flex; align-items: center; gap: 7px;
+    }
+    .state-badge::before {
+      content: '●'; font-size: .45rem; opacity: .5;
+    }
+
+    /* ─── SECTION BASE ────────────────────────────────────── */
+    section { padding: var(--section-pad) 32px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      font-family: var(--font-display); font-size: .8rem;
+      font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--blue-mid); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-tag::after {
+      content: ''; flex: 0 0 40px; height: 2px; background: var(--blue-light);
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800; line-height: 1.05; text-transform: uppercase;
+      color: var(--black); margin-bottom: 20px;
+    }
+    .section-title em { font-style: normal; color: var(--blue-mid); }
+    .section-subtitle {
+      font-size: 1.05rem; color: var(--text-muted);
+      max-width: 560px; line-height: 1.75;
+    }
+
+    /* ─── SERVICES ────────────────────────────────────────── */
+    .services { background: var(--off-white); }
+    .services-header { margin-bottom: 60px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px; background: var(--gray-light);
+      border: 2px solid var(--gray-light); border-radius: 8px; overflow: hidden;
+    }
+    .service-card {
+      background: var(--white); padding: 44px 36px;
+      position: relative; overflow: hidden;
+      transition: background .2s;
+    }
+    .service-card::before {
+      content: ''; position: absolute; left: 0; top: 0;
+      width: 4px; height: 100%; background: transparent;
+      transition: background .2s;
+    }
+    .service-card:hover { background: var(--charcoal); }
+    .service-card:hover::before { background: var(--blue-light); }
+    .service-card:hover .service-title,
+    .service-card:hover .service-desc { color: var(--white); }
+    .service-card:hover .service-desc { color: rgba(255,255,255,.6); }
+    .service-icon {
+      width: 48px; height: 48px; margin-bottom: 24px;
+      background: var(--gray-light); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .service-card:hover .service-icon { background: rgba(90,174,220,.2); }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--blue-mid); }
+    .service-card:hover .service-icon svg { stroke: var(--blue-light); }
+    .service-title {
+      font-family: var(--font-display); font-size: 1.35rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .02em;
+      color: var(--black); margin-bottom: 12px; transition: color .2s;
+    }
+    .service-desc {
+      font-size: .9rem; color: var(--text-muted);
+      line-height: 1.7; transition: color .2s;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────── */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-photo-wrap {
+      background: var(--charcoal);
+      border-radius: 8px; overflow: hidden;
+      aspect-ratio: 4/5; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-photo-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #1a2a33 0%, #0d3d52 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+    }
+    .about-photo-placeholder svg { width: 64px; height: 64px; stroke: rgba(90,174,220,.4); }
+    .about-photo-placeholder span {
+      font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.3); font-weight: 500;
+    }
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--blue-light); border-radius: 8px;
+      padding: 24px 28px; text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    }
+    .about-badge-num {
+      font-family: var(--font-display); font-size: 2.8rem;
+      font-weight: 800; color: var(--black); line-height: 1;
+    }
+    .about-badge-text {
+      font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--black); opacity: .7;
+    }
+    .about-content { }
+    .about-name {
+      font-family: var(--font-display); font-size: 1.6rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--blue-mid); margin-bottom: 4px;
+    }
+    .about-role {
+      font-size: .85rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .about-text {
+      font-size: 1rem; line-height: 1.8; color: var(--text-body);
+      margin-bottom: 16px;
+    }
+    .about-divider {
+      border: none; border-top: 1px solid var(--gray-light);
+      margin: 36px 0;
+    }
+    .about-traits { display: flex; flex-direction: column; gap: 14px; }
+    .trait {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .trait-dot {
+      flex-shrink: 0; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--blue-light);
+      margin-top: 7px;
+    }
+    .trait-text { font-size: .92rem; color: var(--text-body); }
+    .trait-text strong { font-weight: 600; }
+
+    /* ─── WHY ─────────────────────────────────────────────── */
+    .why { background: var(--charcoal); }
+    .why .section-title { color: var(--white); }
+    .why .section-tag { color: var(--blue-light); }
+    .why .section-subtitle { color: rgba(255,255,255,.55); }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 60px;
+    }
+    .why-card {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 6px; padding: 36px 30px;
+      position: relative;
+      transition: border-color .2s, background .2s;
+    }
+    .why-card:hover {
+      border-color: rgba(90,174,220,.4);
+      background: rgba(90,174,220,.04);
+    }
+    .why-number {
+      font-family: var(--font-display); font-size: 4rem;
+      font-weight: 800; color: rgba(90,174,220,.12);
+      line-height: 1; margin-bottom: 20px;
+      transition: color .2s;
+    }
+    .why-card:hover .why-number { color: rgba(90,174,220,.25); }
+    .why-title {
+      font-family: var(--font-display); font-size: 1.2rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .why-desc { font-size: .9rem; color: rgba(255,255,255,.5); line-height: 1.7; }
+
+    /* ─── COVERAGE ────────────────────────────────────────── */
+    .coverage { background: var(--off-white); }
+    .coverage-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start; margin-top: 60px;
+    }
+    .coverage-states { display: flex; flex-direction: column; gap: 16px; }
+    .coverage-state {
+      display: flex; align-items: center; gap: 20px;
+      background: var(--white); border-radius: 6px;
+      padding: 22px 24px;
+      border-left: 4px solid transparent;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .coverage-state:hover {
+      border-left-color: var(--blue-light);
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    }
+    .coverage-state-abbr {
+      font-family: var(--font-display); font-size: 2rem;
+      font-weight: 800; color: var(--blue-mid); min-width: 56px;
+    }
+    .coverage-state-info { }
+    .coverage-state-name {
+      font-family: var(--font-display); font-size: 1.1rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+      color: var(--black);
+    }
+    .coverage-state-desc { font-size: .82rem; color: var(--text-muted); margin-top: 3px; }
+    .coverage-note {
+      background: var(--white); border-radius: 8px; padding: 36px;
+      border: 1px solid var(--gray-light);
+    }
+    .coverage-note-title {
+      font-family: var(--font-display); font-size: 1.4rem;
+      font-weight: 800; text-transform: uppercase; color: var(--black);
+      margin-bottom: 16px;
+    }
+    .coverage-note p {
+      font-size: .92rem; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .coverage-note p:last-child { margin-bottom: 0; }
+
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    .contact { background: var(--black); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-tag { color: var(--blue-light); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 60px; align-items: start;
+    }
+    .contact-info { }
+    .contact-intro {
+      font-size: 1.05rem; color: rgba(255,255,255,.6);
+      line-height: 1.75; margin-bottom: 44px;
+    }
+    .contact-methods { display: flex; flex-direction: column; gap: 20px; }
+    .contact-method {
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .contact-method-icon {
+      flex-shrink: 0; width: 44px; height: 44px;
+      border: 1.5px solid rgba(90,174,220,.3); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-method-icon svg { width: 20px; height: 20px; stroke: var(--blue-light); }
+    .contact-method-label {
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,.35);
+      margin-bottom: 4px;
+    }
+    .contact-method-value {
+      font-size: .98rem; color: var(--white); font-weight: 500;
+    }
+    .contact-method-value a {
+      color: inherit; text-decoration: none;
+      transition: color .2s;
+    }
+    .contact-method-value a:hover { color: var(--blue-light); }
+
+    /* Contact form */
+    .contact-form {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px; padding: 44px;
+    }
+    .form-row { margin-bottom: 20px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    label {
+      display: block; font-size: .78rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,.45); margin-bottom: 8px;
+    }
+    input, textarea, select {
+      width: 100%; background: rgba(255,255,255,.06);
+      border: 1.5px solid rgba(255,255,255,.12);
+      border-radius: var(--radius); padding: 14px 16px;
+      font-family: var(--font-body); font-size: .95rem;
+      color: var(--white); transition: border-color .2s;
+      outline: none;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.25); }
+    input:focus, textarea:focus, select:focus { border-color: var(--blue-light); }
+    textarea { resize: vertical; min-height: 120px; }
+    select { appearance: none; cursor: pointer; }
+    select option { background: var(--charcoal); }
+    .form-submit {
+      width: 100%; background: var(--blue-light); color: var(--black);
+      border: none; border-radius: var(--radius);
+      font-family: var(--font-display); font-size: 1.1rem;
+      font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: 18px; cursor: pointer;
+      transition: background .2s, transform .15s; margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--blue-mid); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 44px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-brand {
+      font-family: var(--font-display); font-size: 1.25rem;
+      font-weight: 700; color: var(--white); letter-spacing: .03em;
+    }
+    .footer-brand span { color: var(--blue-light); }
+    .footer-legal {
+      font-size: .8rem; color: rgba(255,255,255,.3);
+      line-height: 1.6;
+    }
+    .footer-states {
+      font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,.3);
+    }
+
+    /* ─── MOBILE ──────────────────────────────────────────── */
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 8px; gap: 6px; flex-direction: column;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); transition: all .25s;
+    }
+    .nav-mobile { display: none; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-stats { order: -1; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-badge { bottom: 16px; right: 16px; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .coverage-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .contact-form { padding: 28px; }
+    }
+    @media (max-width: 600px) {
+      :root { --section-pad: 64px; }
+      .hero-title { font-size: 3rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .hero-inner { padding: 48px 20px; }
+      section { padding: var(--section-pad) 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="AlcantarDrywall.png" alt="Alcantar Drywall LLC Logo" onerror="this.style.display='none'"/>
+      <div class="nav-logo-text">Alcantar <span>Drywall</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="#contact" class="nav-cta">Free Estimate</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div id="mobileMenu" style="display:none; background:#111; padding:20px 32px; border-top:1px solid rgba(255,255,255,.07);">
+    <ul style="list-style:none; display:flex; flex-direction:column; gap:18px;">
+      <li><a href="#services" style="color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;" onclick="document.getElementById('mobileMenu').style.display='none'">Services</a></li>
+      <li><a href="#about" style="color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;" onclick="document.getElementById('mobileMenu').style.display='none'">About</a></li>
+      <li><a href="#coverage" style="color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;" onclick="document.getElementById('mobileMenu').style.display='none'">Coverage</a></li>
+      <li><a href="#contact" style="color:var(--blue-light);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;" onclick="document.getElementById('mobileMenu').style.display='none'">Free Estimate →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Licensed Drywall Subcontractor — New England</p>
+      <h1 class="hero-title">Built<br/><em>Flat.</em><br/>Finished<br/>Right.</h1>
+      <p class="hero-desc">
+        Precision drywall installation and finishing for general contractors and developers across New England. Every board hung, every seam taped, every surface ready to paint.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a Free Estimate →</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">States Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Sub-Contractor</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">LLC</div>
+          <div class="stat-label">Fully Licensed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATES RIBBON -->
+<div class="states-ribbon">
+  <span class="states-ribbon-label">Service Area</span>
+  <div class="states-ribbon-states">
+    <span class="state-badge">Massachusetts</span>
+    <span class="state-badge">New Hampshire</span>
+    <span class="state-badge">Rhode Island</span>
+    <span class="state-badge">Connecticut</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <p class="section-tag">What We Do</p>
+      <h2 class="section-title">Full-Scope<br/><em>Drywall Services</em></h2>
+      <p class="section-subtitle">From new construction framing to final finish coats — Alcantar Drywall delivers clean, level, paint-ready walls on schedule.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round"/><line x1="3" y1="12" x2="21" y2="12" stroke-linecap="round"/><line x1="12" y1="3" x2="12" y2="21" stroke-linecap="round"/></svg>
+        </div>
+        <div class="service-title">New Construction</div>
+        <div class="service-desc">Full drywall installation on new builds — commercial and residential. We coordinate directly with general contractors to keep your project on schedule.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9" stroke-linecap="round"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="service-title">Finishing & Taping</div>
+        <div class="service-desc">Expert taping, mudding, and sanding to Level 4 and Level 5 finish. Seamless joints, feathered corners — zero telegraphing under paint or lighting.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke-linecap="round"/><path d="M9 9s1-1 3-1 3 1 3 1" stroke-linecap="round"/><path d="M9 15s1 1 3 1 3-1 3-1" stroke-linecap="round"/></svg>
+        </div>
+        <div class="service-title">Repair & Patching</div>
+        <div class="service-desc">Damage repair, hole patching, and texture matching that blends invisibly with existing surfaces. Done right the first time.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M3 21h18M5 21V7l7-4 7 4v14" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21V12h6v9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="service-title">Remodels & Additions</div>
+        <div class="service-desc">Renovation drywall for additions, gut rehabs, and room conversions. We work clean, move fast, and leave the site ready for the next trade.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v16H4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h16M4 14h16M9 4v16M14 4v16" stroke-linecap="round"/></svg>
+        </div>
+        <div class="service-title">Ceilings & Bulkheads</div>
+        <div class="service-desc">Flat ceilings, coffered details, soffits, and bulkheads hung plumb and level. We handle the complex geometry other crews avoid.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="service-title">Commercial Work</div>
+        <div class="service-desc">Office buildouts, retail, multi-family — we understand commercial timelines and scheduling. Experienced working alongside other trades on active job sites.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-photo-wrap">
+          <div class="about-photo-placeholder">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke-linecap="round"/></svg>
+            <span>Your photo here</span>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">10+</div>
+          <div class="about-badge-text">Yrs in the<br/>Trade</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <p class="section-tag">The Contractor</p>
+        <h2 class="section-title">Antonio<br/><em>Alcantar</em></h2>
+        <p class="about-name">Owner & Lead Contractor</p>
+        <p class="about-role">Alcantar Drywall LLC · Licensed Subcontractor</p>
+        <p class="about-text">
+          I started in the trades over a decade ago and built Alcantar Drywall LLC on a simple principle: show up on time, do the work right, and treat every general contractor like a long-term partner — because that's how you actually build a business.
+        </p>
+        <p class="about-text">
+          As a subcontractor, I work directly with GCs and project managers across New England. No middlemen, no hassle — just a direct line to the person doing the work.
+        </p>
+        <hr class="about-divider"/>
+        <div class="about-traits">
+          <div class="trait">
+            <div class="trait-dot"></div>
+            <div class="trait-text"><strong>Direct subcontractor relationship</strong> — you deal with the owner, not a crew lead you've never met.</div>
+          </div>
+          <div class="trait">
+            <div class="trait-dot"></div>
+            <div class="trait-text"><strong>10+ years in the trade</strong> — residential, commercial, and multi-family across New England.</div>
+          </div>
+          <div class="trait">
+            <div class="trait-dot"></div>
+            <div class="trait-text"><strong>Consistent quality</strong> — clean installs, tight finishes, and sites left ready for the next trade.</div>
+          </div>
+          <div class="trait">
+            <div class="trait-dot"></div>
+            <div class="trait-text"><strong>Reliable communication</strong> — straightforward estimates, honest timelines, no surprises.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <p class="section-tag">Why Alcantar</p>
+    <h2 class="section-title">What Sets Us <em>Apart</em></h2>
+    <p class="section-subtitle">General contractors keep coming back because we make their jobs easier — not harder.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-number">01</div>
+        <div class="why-title">On-Schedule Delivery</div>
+        <div class="why-desc">We understand that drywall is a critical-path trade. We give realistic timelines and we hit them — so the painters can start when they're supposed to.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-number">02</div>
+        <div class="why-title">Level 4 & 5 Finishes</div>
+        <div class="why-desc">Our taping and finishing work meets the highest standards. Whether it's under flat paint in a luxury unit or high-sheen in a commercial lobby — it holds up.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-number">03</div>
+        <div class="why-title">Clean Job Sites</div>
+        <div class="why-desc">We cut, bag, and haul our own debris. The next trade walks into a room that's ready — not one that looks like a demo zone.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-number">04</div>
+        <div class="why-title">Owner-Operated</div>
+        <div class="why-desc">Antonio is on every job. You get the same quality and accountability on project one as you do on project twenty.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-number">05</div>
+        <div class="why-title">Fast, Clear Estimates</div>
+        <div class="why-desc">No waiting a week for a number. We review your plans, ask the right questions, and turn around a detailed estimate quickly.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-number">06</div>
+        <div class="why-title">New England Coverage</div>
+        <div class="why-desc">We mobilize across MA, NH, RI, and CT — giving your firm one reliable drywall sub regardless of where in New England the project lands.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage" id="coverage">
+  <div class="section-inner">
+    <p class="section-tag">Service Area</p>
+    <h2 class="section-title">Where We <em>Work</em></h2>
+    <p class="section-subtitle">Based in New England and ready to mobilize across all four states. One subcontractor, wherever your next project is.</p>
+    <div class="coverage-grid">
+      <div class="coverage-states">
+        <div class="coverage-state">
+          <div class="coverage-state-abbr">MA</div>
+          <div class="coverage-state-info">
+            <div class="coverage-state-name">Massachusetts</div>
+            <div class="coverage-state-desc">Home base — full coverage statewide including Greater Boston, MetroWest, Worcester, and the South Shore.</div>
+          </div>
+        </div>
+        <div class="coverage-state">
+          <div class="coverage-state-abbr">NH</div>
+          <div class="coverage-state-info">
+            <div class="coverage-state-name">New Hampshire</div>
+            <div class="coverage-state-desc">Available for projects throughout southern and central NH, including Manchester, Nashua, and the Seacoast.</div>
+          </div>
+        </div>
+        <div class="coverage-state">
+          <div class="coverage-state-abbr">RI</div>
+          <div class="coverage-state-info">
+            <div class="coverage-state-name">Rhode Island</div>
+            <div class="coverage-state-desc">Serving Providence, Newport, and surrounding areas. Compact state, full availability.</div>
+          </div>
+        </div>
+        <div class="coverage-state">
+          <div class="coverage-state-abbr">CT</div>
+          <div class="coverage-state-info">
+            <div class="coverage-state-name">Connecticut</div>
+            <div class="coverage-state-desc">Available for projects throughout Connecticut, particularly northern CT and the Hartford corridor.</div>
+          </div>
+        </div>
+      </div>
+      <div class="coverage-note">
+        <div class="coverage-note-title">Working With Us Across State Lines</div>
+        <p>Alcantar Drywall LLC operates as a licensed subcontractor across New England. If your firm runs projects in multiple states, we're the drywall sub you only have to vet once.</p>
+        <p>We're accustomed to coordinating directly with superintendents, project managers, and GC office staff — whatever your workflow is, we adapt to it.</p>
+        <p>Not sure if we cover your project location? Call or send a message and we'll let you know right away.</p>
+        <br/>
+        <a href="#contact" class="btn-primary" style="display:inline-flex;">Check Your Area →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <p class="section-tag">Get In Touch</p>
+    <h2 class="section-title">Request a <em>Free Estimate</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="contact-intro">
+          Ready to bid your next project? Send us the details and we'll get back to you with a clear, itemized estimate. GCs, developers, and project managers welcome.
+        </p>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 7.18 2 2 0 015 5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 12a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Phone</div>
+              <div class="contact-method-value"><a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Email</div>
+              <div class="contact-method-value"><a href="mailto:info@alcantardrywall.com">info@alcantardrywall.com</a></div>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Service Area</div>
+              <div class="contact-method-value">MA · NH · RI · CT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form action="mailto:info@alcantardrywall.com" method="post" enctype="text/plain">
+          <div class="form-row-2">
+            <div class="form-row" style="margin-bottom:0">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required/>
+            </div>
+            <div class="form-row" style="margin-bottom:0">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Smith Construction LLC"/>
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-row" style="margin-bottom:0">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(617) 555-0100"/>
+            </div>
+            <div class="form-row" style="margin-bottom:0">
+              <label for="state">Project State</label>
+              <select id="state" name="state">
+                <option value="">Select state…</option>
+                <option>Massachusetts</option>
+                <option>New Hampshire</option>
+                <option>Rhode Island</option>
+                <option>Connecticut</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="project">Project Type</label>
+            <select id="project" name="project">
+              <option value="">Select type…</option>
+              <option>New Construction – Residential</option>
+              <option>New Construction – Commercial</option>
+              <option>Remodel / Renovation</option>
+              <option>Multi-Family</option>
+              <option>Repair / Patching</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" placeholder="Square footage, scope, timeline, location…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Estimate Request →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Alcantar <span>Drywall</span> LLC</div>
+    <div class="footer-legal">
+      © 2025 Alcantar Drywall LLC · All rights reserved<br/>
+      Licensed Drywall Subcontractor · New England
+    </div>
+    <div class="footer-states">Serving MA · NH · RI · CT</div>
+  </div>
+</footer>
+
+<script>
+  // Minimal mobile menu toggle
+  const ham = document.querySelector('.hamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (ham && menu) {
+    ham.addEventListener('click', () => {
+      const open = menu.style.display === 'flex';
+      menu.style.display = open ? 'none' : 'flex';
+      menu.style.flexDirection = 'column';
+    });
+  }
+</script>
+
+</body>
+</html>
