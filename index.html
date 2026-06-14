@@ -30,6 +30,13 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
+/* Custom scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:var(--blue-deep)}
+*{scrollbar-width:thin;scrollbar-color:var(--blue) transparent}
+
 /* ══════════════════════════════════════
    NAV — ELEVATED GLASS HEADER
 ══════════════════════════════════════ */
@@ -787,14 +794,14 @@ footer{
   <div class="hero-inner">
     <!-- Left copy -->
     <div class="hero-left">
-      <p class="hero-eyebrow">Alcantar Drywall LLC · Est. New England</p>
+      <p class="hero-eyebrow">Licensed Drywall Subcontractor</p>
       <h1 class="hero-headline">
         The Finish<br/>Your Home<br/><em>Deserves.</em>
       </h1>
-      <p class="hero-sub">Professional Drywall · Since 2014</p>
+      <p class="hero-sub">Professional Drywall · New England</p>
       <div class="hero-rule"></div>
       <p class="hero-desc">
-        Expert drywall installation, finishing, and repair for general contractors and homeowners across Massachusetts, New Hampshire, Rhode Island, and Connecticut. Built on ten years of showing up and doing it right.
+        Precision drywall for general contractors and homeowners across New England. Ten years of showing up and doing it right.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-main">
@@ -838,19 +845,7 @@ footer{
     </div>
   </div>
 
-  <!-- Bottom state strip -->
-  <div class="hero-bar">
-    <div class="hero-bar-inner">
-      <span class="bar-label">Serving</span>
-      <div class="bar-divider"></div>
-      <div class="bar-states">
-        <span class="bar-state">Massachusetts</span>
-        <span class="bar-state">New Hampshire</span>
-        <span class="bar-state">Rhode Island</span>
-        <span class="bar-state">Connecticut</span>
-      </div>
-    </div>
-  </div>
+
 </section>
 
 <!-- ═══ SERVICES ══════════════════════════ -->
@@ -860,7 +855,7 @@ footer{
       <div>
         <p class="eyebrow">What We Do</p>
         <h2 class="section-title">Full-Scope<br/><em>Drywall Services</em></h2>
-        <p class="section-sub">From new construction to final finish coats — every scope delivered clean, level, and paint-ready.</p>
+        <p class="section-sub">Every scope, from stud to paint-ready — delivered clean and on schedule.</p>
       </div>
       <div class="services-head-right">
         <a href="#contact" class="btn-main">
