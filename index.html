@@ -1,729 +1,996 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alcantar Drywall LLC – Professional Drywall Contractor</title>
-  <meta name="description" content="Alcantar Drywall LLC – Expert drywall installation, finishing, and repair across New England. 10+ years of craftsmanship. Serving MA, NH, RI, and CT."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alcantar Drywall LLC — The Finish Your Home Deserves</title>
+<meta name="description" content="Alcantar Drywall LLC — Expert drywall installation, finishing, and repair across New England. 10+ years of craftsmanship. Serving MA, NH, RI, and CT."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-    :root {
-      --blue-light:   #5AAEDC;
-      --blue-mid:     #2E8BB5;
-      --blue-dark:    #0D5C7D;
-      --black:        #0A0A0A;
-      --charcoal:     #1C1C1C;
-      --white:        #FFFFFF;
-      --off-white:    #F5F8FB;
-      --gray-light:   #E3EDF4;
-      --gray-mid:     #94A8B5;
-      --text-body:    #2A3740;
-      --text-muted:   #5E7380;
+:root{
+  --ink:       #07111A;
+  --ink-80:    rgba(7,17,26,.8);
+  --blue:      #3BA5D8;
+  --blue-deep: #1C6FA0;
+  --blue-pale: #D6EEF8;
+  --blue-glow: rgba(59,165,216,.18);
+  --white:     #FFFFFF;
+  --off:       #F3F7FA;
+  --stone:     #E8EEF3;
+  --muted:     #7A909E;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --cond:  'Barlow Condensed', sans-serif;
+}
 
-      --font-display: 'Barlow Condensed', sans-serif;
-      --font-body:    'Inter', sans-serif;
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-      --radius:       4px;
-      --section-pad:  100px;
-    }
+/* ══════════════════════════════════════
+   NAV — ELEVATED GLASS HEADER
+══════════════════════════════════════ */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:200;
+  transition:background .35s, box-shadow .35s;
+}
+header.scrolled{
+  background:rgba(7,17,26,.92);
+  backdrop-filter:blur(18px);
+  box-shadow:0 1px 0 rgba(59,165,216,.15);
+}
+.nav-wrap{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:0 40px;height:80px;
+}
+/* Left: logo mark + name */
+.nav-left{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-mark{
+  width:42px;height:42px;border-radius:6px;
+  background:linear-gradient(135deg,var(--blue-deep) 0%,var(--blue) 100%);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  overflow:hidden;
+}
+.logo-mark img{width:100%;height:100%;object-fit:cover}
+.logo-mark-fallback{
+  font-family:var(--cond);font-size:1.15rem;font-weight:800;
+  color:var(--white);letter-spacing:.04em;line-height:1
+}
+.nav-brand{
+  display:flex;flex-direction:column;gap:1px;
+}
+.nav-brand-name{
+  font-family:var(--cond);font-size:1.1rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--white);line-height:1;
+}
+.nav-brand-tag{
+  font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.38);
+}
+/* Center nav links */
+.nav-center{
+  display:flex;align-items:center;gap:8px;
+}
+.nav-link{
+  font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);text-decoration:none;
+  padding:8px 14px;border-radius:4px;
+  transition:color .2s,background .2s;
+}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,.06)}
+/* Right */
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:12px}
+.nav-phone{
+  font-family:var(--cond);font-size:.9rem;font-weight:700;letter-spacing:.05em;
+  color:rgba(255,255,255,.55);text-decoration:none;
+  transition:color .2s;
+}
+.nav-phone:hover{color:var(--blue)}
+.nav-btn{
+  background:var(--blue);color:var(--ink);
+  font-family:var(--cond);font-size:.85rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;
+  padding:10px 22px;border-radius:4px;
+  transition:background .2s,transform .15s;white-space:nowrap;
+}
+.nav-btn:hover{background:var(--blue-deep);color:var(--white);transform:translateY(-1px)}
+/* Hamburger */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;align-items:flex-end}
+.hamburger span{display:block;height:2px;background:var(--white);border-radius:2px;transition:all .25s}
+.hamburger span:nth-child(1){width:24px}
+.hamburger span:nth-child(2){width:16px}
+.hamburger span:nth-child(3){width:20px}
+.hamburger:hover span{width:24px}
 
-    html { scroll-behavior: smooth; }
-    body  {
-      font-family: var(--font-body);
-      color: var(--text-body);
-      background: var(--white);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero{
+  min-height:100vh;background:var(--ink);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+/* Architectural grid lines */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(59,165,216,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,165,216,.05) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 80% 60% at 60% 50%,black 30%,transparent 100%);
+}
+/* Accent arc */
+.hero-arc{
+  position:absolute;right:-120px;top:50%;transform:translateY(-55%);
+  width:700px;height:700px;border-radius:50%;
+  border:1px solid rgba(59,165,216,.12);
+  pointer-events:none;
+}
+.hero-arc::after{
+  content:'';position:absolute;inset:60px;border-radius:50%;
+  border:1px solid rgba(59,165,216,.08);
+}
+/* Blue light bloom */
+.hero-bloom{
+  position:absolute;right:15%;top:30%;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,165,216,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
 
-    /* ─── NAV ─────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: rgba(10, 10, 10, 0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(90,174,220,.15);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 32px; height: 72px;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 12px; text-decoration: none;
-    }
-    .nav-logo img { height: 44px; width: auto; }
-    .nav-logo-text {
-      font-family: var(--font-display);
-      font-size: 1.55rem; font-weight: 700; letter-spacing: 0.03em;
-      color: var(--white); line-height: 1;
-    }
-    .nav-logo-text span { color: var(--blue-light); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: .85rem; font-weight: 500; letter-spacing: .06em;
-      text-transform: uppercase; color: rgba(255,255,255,.75);
-      text-decoration: none; transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--blue-light); }
-    .nav-cta {
-      background: var(--blue-light); color: var(--black) !important;
-      padding: 10px 22px; border-radius: var(--radius);
-      font-weight: 600 !important; color: var(--black) !important;
-      transition: background .2s !important;
-    }
-    .nav-cta:hover { background: var(--blue-mid) !important; color: var(--white) !important; }
+.hero-inner{
+  flex:1;max-width:1280px;width:100%;margin:0 auto;padding:0 40px;
+  display:grid;grid-template-columns:1fr 480px;gap:60px;align-items:center;
+  padding-top:80px;position:relative;z-index:1;
+}
+.hero-left{}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blue);
+  margin-bottom:28px;
+}
+.hero-eyebrow::before{
+  content:'';width:32px;height:1px;background:var(--blue);opacity:.6;
+}
+.hero-headline{
+  font-family:var(--serif);
+  font-size:clamp(3.4rem,6.5vw,5.8rem);
+  line-height:1.0;color:var(--white);
+  margin-bottom:10px;
+  letter-spacing:-.01em;
+}
+.hero-headline em{
+  font-style:italic;color:var(--blue);
+}
+.hero-sub{
+  font-family:var(--cond);font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);margin-bottom:36px;line-height:1;
+}
+.hero-rule{
+  width:60px;height:2px;background:var(--blue);
+  margin-bottom:32px;opacity:.7;
+}
+.hero-desc{
+  font-size:1.02rem;font-weight:300;line-height:1.8;
+  color:rgba(255,255,255,.55);max-width:460px;margin-bottom:48px;
+}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-main{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--blue);color:var(--ink);
+  font-family:var(--cond);font-size:1rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;
+  padding:16px 34px;border-radius:4px;
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.btn-main:hover{
+  background:var(--blue-deep);color:var(--white);
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(59,165,216,.25);
+}
+.btn-main svg{width:16px;height:16px;stroke:currentColor;flex-shrink:0;transition:transform .2s}
+.btn-main:hover svg{transform:translateX(3px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--cond);font-size:.85rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;
+  padding:16px 20px;border-radius:4px;
+  transition:color .2s;
+}
+.btn-ghost:hover{color:var(--white)}
 
-    /* ─── HERO ────────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      background: var(--black);
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding-top: 72px;
-    }
-    /* Diagonal accent stripe */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(135deg,
-          transparent 0%,
-          transparent 55%,
-          rgba(90,174,220,.06) 55%,
-          rgba(90,174,220,.06) 65%,
-          transparent 65%
-        );
-      pointer-events: none;
-    }
-    /* Blueprint grid texture */
-    .hero::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(90,174,220,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(90,174,220,.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; padding: 80px 32px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-      align-items: center; position: relative; z-index: 1;
-    }
-    .hero-eyebrow {
-      font-family: var(--font-display);
-      font-size: .85rem; font-weight: 600; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--blue-light);
-      margin-bottom: 20px;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 7vw, 6rem);
-      font-weight: 800; line-height: .92;
-      letter-spacing: -.01em; text-transform: uppercase;
-      color: var(--white); margin-bottom: 28px;
-    }
-    .hero-title em { font-style: normal; color: var(--blue-light); }
-    .hero-desc {
-      font-size: 1.05rem; font-weight: 300;
-      color: rgba(255,255,255,.65); line-height: 1.75;
-      max-width: 420px; margin-bottom: 44px;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue-light); color: var(--black);
-      font-family: var(--font-display); font-size: 1.05rem;
-      font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-      padding: 16px 32px; border-radius: var(--radius);
-      text-decoration: none; transition: background .2s, transform .15s;
-    }
-    .btn-primary:hover { background: var(--blue-mid); color: var(--white); transform: translateY(-2px); }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.8);
-      font-family: var(--font-display); font-size: 1.05rem;
-      font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-      padding: 16px 32px; border-radius: var(--radius);
-      text-decoration: none; transition: border-color .2s, color .2s, transform .15s;
-    }
-    .btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); transform: translateY(-2px); }
+/* Hero right: credential card */
+.hero-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;overflow:hidden;
+  backdrop-filter:blur(4px);
+}
+.hero-card-top{
+  background:linear-gradient(135deg,var(--blue-deep) 0%,var(--blue) 100%);
+  padding:36px 36px 32px;
+  position:relative;overflow:hidden;
+}
+.hero-card-top::after{
+  content:'';position:absolute;right:-40px;bottom:-40px;
+  width:160px;height:160px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.card-label{
+  font-family:var(--cond);font-size:.7rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px;
+}
+.card-name{
+  font-family:var(--serif);font-size:1.9rem;color:var(--white);
+  line-height:1.1;margin-bottom:4px;
+}
+.card-role{
+  font-size:.82rem;font-weight:400;color:rgba(255,255,255,.65);
+  letter-spacing:.04em;
+}
+.hero-card-body{padding:0}
+.stat-list{list-style:none}
+.stat-list li{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 36px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.stat-list li:last-child{border-bottom:none}
+.stat-list .s-label{
+  font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.38);
+}
+.stat-list .s-val{
+  font-family:var(--cond);font-size:1.05rem;font-weight:700;letter-spacing:.04em;
+  color:var(--white);
+}
+.s-val.blue{color:var(--blue)}
 
-    /* Hero right – stats panel */
-    .hero-stats {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(90,174,220,.2);
-      border-radius: 8px;
-      padding: 44px 40px;
-    }
-    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .stat-item {
-      padding: 28px 24px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      border-right: 1px solid rgba(255,255,255,.06);
-    }
-    .stat-item:nth-child(2n) { border-right: none; }
-    .stat-item:nth-last-child(-n+2) { border-bottom: none; }
-    .stat-num {
-      font-family: var(--font-display); font-size: 3.2rem;
-      font-weight: 800; color: var(--blue-light); line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: .78rem; font-weight: 500; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.5);
-    }
+/* Hero bottom bar */
+.hero-bar{
+  position:relative;z-index:1;
+  border-top:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.02);
+}
+.hero-bar-inner{
+  max-width:1280px;margin:0 auto;padding:0 40px;
+  display:flex;align-items:center;height:60px;gap:12px;
+}
+.bar-label{
+  font-family:var(--cond);font-size:.68rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap;
+}
+.bar-divider{
+  width:1px;height:20px;background:rgba(255,255,255,.1);flex-shrink:0;
+}
+.bar-states{
+  display:flex;gap:0;flex-wrap:wrap;
+}
+.bar-state{
+  font-family:var(--cond);font-size:.85rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.55);
+  padding:4px 18px;position:relative;
+  transition:color .2s;
+}
+.bar-state:not(:last-child)::after{
+  content:'·';position:absolute;right:0;top:50%;transform:translateY(-50%);
+  color:rgba(255,255,255,.2);
+}
+.bar-state:hover{color:var(--blue)}
 
-    /* Service states ribbon */
-    .states-ribbon {
-      background: var(--blue-light);
-      padding: 14px 32px;
-      display: flex; align-items: center; justify-content: center;
-      gap: 40px; flex-wrap: wrap;
-    }
-    .states-ribbon-label {
-      font-family: var(--font-display); font-size: .8rem;
-      font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--black); opacity: .6;
-    }
-    .states-ribbon-states {
-      display: flex; gap: 32px; flex-wrap: wrap;
-    }
-    .state-badge {
-      font-family: var(--font-display); font-size: 1rem;
-      font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      color: var(--black); display: flex; align-items: center; gap: 7px;
-    }
-    .state-badge::before {
-      content: '●'; font-size: .45rem; opacity: .5;
-    }
+/* ══════════════════════════════════════
+   SHARED SECTION BASE
+══════════════════════════════════════ */
+section{padding:110px 40px}
+.wrap{max-width:1280px;margin:0 auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--cond);font-size:.72rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:28px;height:1.5px;background:var(--blue)}
+h2.section-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,4vw,3.2rem);
+  line-height:1.1;color:var(--ink);margin-bottom:16px;
+}
+h2.section-title em{font-style:italic;color:var(--blue-deep)}
+.section-sub{
+  font-size:1rem;line-height:1.75;color:var(--muted);max-width:520px;
+}
 
-    /* ─── SECTION BASE ────────────────────────────────────── */
-    section { padding: var(--section-pad) 32px; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-tag {
-      font-family: var(--font-display); font-size: .8rem;
-      font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--blue-mid); margin-bottom: 14px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-tag::after {
-      content: ''; flex: 0 0 40px; height: 2px; background: var(--blue-light);
-    }
-    .section-title {
-      font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 800; line-height: 1.05; text-transform: uppercase;
-      color: var(--black); margin-bottom: 20px;
-    }
-    .section-title em { font-style: normal; color: var(--blue-mid); }
-    .section-subtitle {
-      font-size: 1.05rem; color: var(--text-muted);
-      max-width: 560px; line-height: 1.75;
-    }
+/* ══════════════════════════════════════
+   SERVICES
+══════════════════════════════════════ */
+.services{background:var(--off)}
+.services-head{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  align-items:end;margin-bottom:60px;
+}
+.services-head-right{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  align-items:flex-end;
+}
+.services-cta-note{
+  font-size:.85rem;color:var(--muted);text-align:right;margin-top:12px;
+}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--stone);
+  border:1px solid var(--stone);border-radius:8px;overflow:hidden;
+}
+.svc{
+  background:var(--white);padding:44px 36px 40px;
+  position:relative;overflow:hidden;cursor:default;
+  transition:background .25s;
+}
+.svc::after{
+  content:'';position:absolute;left:0;bottom:0;
+  width:0;height:3px;background:var(--blue);
+  transition:width .35s cubic-bezier(.4,0,.2,1);
+}
+.svc:hover{background:var(--ink)}
+.svc:hover::after{width:100%}
+.svc-num{
+  font-family:var(--cond);font-size:.72rem;font-weight:700;letter-spacing:.15em;
+  color:var(--blue);margin-bottom:28px;transition:color .25s;
+}
+.svc:hover .svc-num{color:rgba(59,165,216,.5)}
+.svc-icon{
+  width:52px;height:52px;border-radius:8px;
+  background:var(--off);display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;transition:background .25s;
+}
+.svc:hover .svc-icon{background:rgba(59,165,216,.12)}
+.svc-icon svg{width:24px;height:24px;stroke:var(--blue-deep);transition:stroke .25s}
+.svc:hover .svc-icon svg{stroke:var(--blue)}
+.svc-title{
+  font-family:var(--cond);font-size:1.25rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:12px;transition:color .25s;
+}
+.svc:hover .svc-title{color:var(--white)}
+.svc-desc{
+  font-size:.88rem;line-height:1.72;color:var(--muted);
+  transition:color .25s;
+}
+.svc:hover .svc-desc{color:rgba(255,255,255,.5)}
 
-    /* ─── SERVICES ────────────────────────────────────────── */
-    .services { background: var(--off-white); }
-    .services-header { margin-bottom: 60px; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2px; background: var(--gray-light);
-      border: 2px solid var(--gray-light); border-radius: 8px; overflow: hidden;
-    }
-    .service-card {
-      background: var(--white); padding: 44px 36px;
-      position: relative; overflow: hidden;
-      transition: background .2s;
-    }
-    .service-card::before {
-      content: ''; position: absolute; left: 0; top: 0;
-      width: 4px; height: 100%; background: transparent;
-      transition: background .2s;
-    }
-    .service-card:hover { background: var(--charcoal); }
-    .service-card:hover::before { background: var(--blue-light); }
-    .service-card:hover .service-title,
-    .service-card:hover .service-desc { color: var(--white); }
-    .service-card:hover .service-desc { color: rgba(255,255,255,.6); }
-    .service-icon {
-      width: 48px; height: 48px; margin-bottom: 24px;
-      background: var(--gray-light); border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s;
-    }
-    .service-card:hover .service-icon { background: rgba(90,174,220,.2); }
-    .service-icon svg { width: 24px; height: 24px; stroke: var(--blue-mid); }
-    .service-card:hover .service-icon svg { stroke: var(--blue-light); }
-    .service-title {
-      font-family: var(--font-display); font-size: 1.35rem;
-      font-weight: 700; text-transform: uppercase; letter-spacing: .02em;
-      color: var(--black); margin-bottom: 12px; transition: color .2s;
-    }
-    .service-desc {
-      font-size: .9rem; color: var(--text-muted);
-      line-height: 1.7; transition: color .2s;
-    }
+/* ══════════════════════════════════════
+   ABOUT
+══════════════════════════════════════ */
+.about{background:var(--white)}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:90px;align-items:center;
+}
+.about-photo{
+  position:relative;
+}
+.about-photo-frame{
+  background:linear-gradient(145deg,#0e2030 0%,#0d3650 100%);
+  border-radius:10px;aspect-ratio:3/4;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+}
+.about-photo-frame img{width:100%;height:100%;object-fit:cover}
+.photo-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  padding:40px;
+}
+.photo-placeholder svg{width:60px;height:60px;stroke:rgba(59,165,216,.25)}
+.photo-placeholder span{
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);font-weight:500;
+}
+/* floating badge */
+.about-badge{
+  position:absolute;bottom:-24px;left:-24px;
+  background:var(--ink);border:1px solid rgba(59,165,216,.25);
+  border-radius:8px;padding:22px 26px;
+  box-shadow:0 16px 48px rgba(0,0,0,.25);
+}
+.badge-num{
+  font-family:var(--serif);font-size:2.8rem;color:var(--blue);
+  line-height:1;margin-bottom:4px;
+}
+.badge-text{
+  font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);line-height:1.4;
+}
+/* floating cert */
+.about-cert{
+  position:absolute;top:24px;right:-20px;
+  background:var(--white);border-radius:6px;
+  padding:14px 18px;
+  box-shadow:0 8px 28px rgba(0,0,0,.12);
+  display:flex;align-items:center;gap:10px;
+}
+.cert-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.cert-text{
+  font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink);line-height:1.4;
+}
 
-    /* ─── ABOUT ───────────────────────────────────────────── */
-    .about { background: var(--white); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-    .about-visual {
-      position: relative;
-    }
-    .about-photo-wrap {
-      background: var(--charcoal);
-      border-radius: 8px; overflow: hidden;
-      aspect-ratio: 4/5; position: relative;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .about-photo-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, #1a2a33 0%, #0d3d52 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 12px;
-    }
-    .about-photo-placeholder svg { width: 64px; height: 64px; stroke: rgba(90,174,220,.4); }
-    .about-photo-placeholder span {
-      font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
-      color: rgba(255,255,255,.3); font-weight: 500;
-    }
-    .about-badge {
-      position: absolute; bottom: -20px; right: -20px;
-      background: var(--blue-light); border-radius: 8px;
-      padding: 24px 28px; text-align: center;
-      box-shadow: 0 8px 32px rgba(0,0,0,.18);
-    }
-    .about-badge-num {
-      font-family: var(--font-display); font-size: 2.8rem;
-      font-weight: 800; color: var(--black); line-height: 1;
-    }
-    .about-badge-text {
-      font-size: .72rem; font-weight: 600; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--black); opacity: .7;
-    }
-    .about-content { }
-    .about-name {
-      font-family: var(--font-display); font-size: 1.6rem;
-      font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
-      color: var(--blue-mid); margin-bottom: 4px;
-    }
-    .about-role {
-      font-size: .85rem; font-weight: 500; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--text-muted);
-      margin-bottom: 28px;
-    }
-    .about-text {
-      font-size: 1rem; line-height: 1.8; color: var(--text-body);
-      margin-bottom: 16px;
-    }
-    .about-divider {
-      border: none; border-top: 1px solid var(--gray-light);
-      margin: 36px 0;
-    }
-    .about-traits { display: flex; flex-direction: column; gap: 14px; }
-    .trait {
-      display: flex; align-items: flex-start; gap: 14px;
-    }
-    .trait-dot {
-      flex-shrink: 0; width: 8px; height: 8px;
-      border-radius: 50%; background: var(--blue-light);
-      margin-top: 7px;
-    }
-    .trait-text { font-size: .92rem; color: var(--text-body); }
-    .trait-text strong { font-weight: 600; }
+.about-content{}
+.about-owner-name{
+  font-family:var(--serif);font-size:1.5rem;color:var(--blue-deep);
+  margin-bottom:2px;
+}
+.about-owner-role{
+  font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:32px;
+}
+.about-copy{
+  font-size:.97rem;line-height:1.82;color:var(--ink);
+  margin-bottom:14px;opacity:.8;
+}
+.about-divider{border:none;border-top:1px solid var(--stone);margin:36px 0}
+.trait-list{display:flex;flex-direction:column;gap:16px}
+.trait{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:18px 20px;border-radius:6px;
+  background:var(--off);border-left:3px solid var(--blue);
+}
+.trait-icon{
+  width:36px;height:36px;border-radius:4px;
+  background:var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.trait-icon svg{width:16px;height:16px;stroke:var(--blue-deep)}
+.trait-body{}
+.trait-title{
+  font-size:.82rem;font-weight:600;letter-spacing:.04em;
+  color:var(--ink);margin-bottom:2px;
+}
+.trait-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
 
-    /* ─── WHY ─────────────────────────────────────────────── */
-    .why { background: var(--charcoal); }
-    .why .section-title { color: var(--white); }
-    .why .section-tag { color: var(--blue-light); }
-    .why .section-subtitle { color: rgba(255,255,255,.55); }
-    .why-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px; margin-top: 60px;
-    }
-    .why-card {
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 6px; padding: 36px 30px;
-      position: relative;
-      transition: border-color .2s, background .2s;
-    }
-    .why-card:hover {
-      border-color: rgba(90,174,220,.4);
-      background: rgba(90,174,220,.04);
-    }
-    .why-number {
-      font-family: var(--font-display); font-size: 4rem;
-      font-weight: 800; color: rgba(90,174,220,.12);
-      line-height: 1; margin-bottom: 20px;
-      transition: color .2s;
-    }
-    .why-card:hover .why-number { color: rgba(90,174,220,.25); }
-    .why-title {
-      font-family: var(--font-display); font-size: 1.2rem;
-      font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
-      color: var(--white); margin-bottom: 12px;
-    }
-    .why-desc { font-size: .9rem; color: rgba(255,255,255,.5); line-height: 1.7; }
+/* ══════════════════════════════════════
+   PROCESS (replaces "Why")
+══════════════════════════════════════ */
+.process{
+  background:var(--ink);
+  position:relative;overflow:hidden;
+}
+.process::before{
+  content:'';position:absolute;
+  left:-200px;bottom:-200px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(59,165,216,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.process .eyebrow,.process h2.section-title{color:var(--white)}
+.process h2.section-title em{color:var(--blue)}
+.process .section-sub{color:rgba(255,255,255,.42)}
+.process-head{margin-bottom:60px}
+.process-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,.06);
+  border-radius:8px;overflow:hidden;
+}
+.process-step{
+  background:rgba(255,255,255,.025);
+  padding:40px 30px;position:relative;
+  transition:background .25s;
+}
+.process-step:hover{background:rgba(59,165,216,.07)}
+.step-num{
+  font-family:var(--cond);font-size:3.5rem;font-weight:800;
+  color:rgba(59,165,216,.1);line-height:1;
+  margin-bottom:20px;transition:color .25s;
+}
+.process-step:hover .step-num{color:rgba(59,165,216,.2)}
+.step-title{
+  font-family:var(--cond);font-size:1.05rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--white);
+  margin-bottom:12px;
+}
+.step-desc{font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.4)}
+/* connector arrow */
+.process-step:not(:last-child)::after{
+  content:'→';
+  position:absolute;right:-18px;top:50%;transform:translateY(-50%);
+  font-size:1.2rem;color:rgba(59,165,216,.3);
+  z-index:1;pointer-events:none;
+}
 
-    /* ─── COVERAGE ────────────────────────────────────────── */
-    .coverage { background: var(--off-white); }
-    .coverage-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: start; margin-top: 60px;
-    }
-    .coverage-states { display: flex; flex-direction: column; gap: 16px; }
-    .coverage-state {
-      display: flex; align-items: center; gap: 20px;
-      background: var(--white); border-radius: 6px;
-      padding: 22px 24px;
-      border-left: 4px solid transparent;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .coverage-state:hover {
-      border-left-color: var(--blue-light);
-      box-shadow: 0 4px 20px rgba(0,0,0,.1);
-    }
-    .coverage-state-abbr {
-      font-family: var(--font-display); font-size: 2rem;
-      font-weight: 800; color: var(--blue-mid); min-width: 56px;
-    }
-    .coverage-state-info { }
-    .coverage-state-name {
-      font-family: var(--font-display); font-size: 1.1rem;
-      font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
-      color: var(--black);
-    }
-    .coverage-state-desc { font-size: .82rem; color: var(--text-muted); margin-top: 3px; }
-    .coverage-note {
-      background: var(--white); border-radius: 8px; padding: 36px;
-      border: 1px solid var(--gray-light);
-    }
-    .coverage-note-title {
-      font-family: var(--font-display); font-size: 1.4rem;
-      font-weight: 800; text-transform: uppercase; color: var(--black);
-      margin-bottom: 16px;
-    }
-    .coverage-note p {
-      font-size: .92rem; color: var(--text-muted); line-height: 1.75;
-      margin-bottom: 14px;
-    }
-    .coverage-note p:last-child { margin-bottom: 0; }
+/* ══════════════════════════════════════
+   TESTIMONIAL / TRUST STRIP
+══════════════════════════════════════ */
+.trust{background:var(--blue);padding:70px 40px}
+.trust-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;
+}
+.trust-quote{
+  font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.8rem);
+  font-style:italic;color:var(--white);max-width:640px;line-height:1.45;
+}
+.trust-attr{
+  flex-shrink:0;text-align:right;
+}
+.trust-attr-name{
+  font-family:var(--cond);font-size:.95rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--white);
+  margin-bottom:2px;
+}
+.trust-attr-role{font-size:.78rem;color:rgba(255,255,255,.65)}
 
-    /* ─── CONTACT ─────────────────────────────────────────── */
-    .contact { background: var(--black); }
-    .contact .section-title { color: var(--white); }
-    .contact .section-tag { color: var(--blue-light); }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; margin-top: 60px; align-items: start;
-    }
-    .contact-info { }
-    .contact-intro {
-      font-size: 1.05rem; color: rgba(255,255,255,.6);
-      line-height: 1.75; margin-bottom: 44px;
-    }
-    .contact-methods { display: flex; flex-direction: column; gap: 20px; }
-    .contact-method {
-      display: flex; align-items: flex-start; gap: 16px;
-    }
-    .contact-method-icon {
-      flex-shrink: 0; width: 44px; height: 44px;
-      border: 1.5px solid rgba(90,174,220,.3); border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .contact-method-icon svg { width: 20px; height: 20px; stroke: var(--blue-light); }
-    .contact-method-label {
-      font-size: .72rem; font-weight: 600; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.35);
-      margin-bottom: 4px;
-    }
-    .contact-method-value {
-      font-size: .98rem; color: var(--white); font-weight: 500;
-    }
-    .contact-method-value a {
-      color: inherit; text-decoration: none;
-      transition: color .2s;
-    }
-    .contact-method-value a:hover { color: var(--blue-light); }
+/* ══════════════════════════════════════
+   COVERAGE
+══════════════════════════════════════ */
+.coverage{background:var(--off)}
+.coverage-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  align-items:start;margin-top:56px;
+}
+.states-cards{display:flex;flex-direction:column;gap:14px}
+.state-card{
+  display:flex;align-items:center;gap:20px;
+  background:var(--white);border-radius:6px;
+  padding:22px 26px;border:1px solid var(--stone);
+  transition:border-color .2s,box-shadow .2s,transform .2s;cursor:default;
+}
+.state-card:hover{
+  border-color:var(--blue);
+  box-shadow:0 4px 24px rgba(59,165,216,.12);
+  transform:translateX(4px);
+}
+.state-abbr{
+  font-family:var(--cond);font-size:2rem;font-weight:800;
+  color:var(--blue);min-width:56px;line-height:1;
+}
+.state-info{}
+.state-name{
+  font-family:var(--cond);font-size:1rem;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-bottom:3px;
+}
+.state-note{font-size:.8rem;color:var(--muted);line-height:1.5}
+.coverage-aside{
+  background:var(--ink);border-radius:10px;
+  padding:44px;position:sticky;top:110px;
+}
+.aside-title{
+  font-family:var(--serif);font-size:1.7rem;color:var(--white);
+  margin-bottom:20px;line-height:1.2;
+}
+.aside-body{
+  font-size:.9rem;line-height:1.75;
+  color:rgba(255,255,255,.5);margin-bottom:14px;
+}
+.aside-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue);color:var(--ink);
+  font-family:var(--cond);font-size:.9rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;
+  padding:14px 26px;border-radius:4px;margin-top:16px;
+  transition:background .2s,transform .15s;
+}
+.aside-cta:hover{background:var(--blue-deep);color:var(--white);transform:translateY(-2px)}
 
-    /* Contact form */
-    .contact-form {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 8px; padding: 44px;
-    }
-    .form-row { margin-bottom: 20px; }
-    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-    label {
-      display: block; font-size: .78rem; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: rgba(255,255,255,.45); margin-bottom: 8px;
-    }
-    input, textarea, select {
-      width: 100%; background: rgba(255,255,255,.06);
-      border: 1.5px solid rgba(255,255,255,.12);
-      border-radius: var(--radius); padding: 14px 16px;
-      font-family: var(--font-body); font-size: .95rem;
-      color: var(--white); transition: border-color .2s;
-      outline: none;
-    }
-    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.25); }
-    input:focus, textarea:focus, select:focus { border-color: var(--blue-light); }
-    textarea { resize: vertical; min-height: 120px; }
-    select { appearance: none; cursor: pointer; }
-    select option { background: var(--charcoal); }
-    .form-submit {
-      width: 100%; background: var(--blue-light); color: var(--black);
-      border: none; border-radius: var(--radius);
-      font-family: var(--font-display); font-size: 1.1rem;
-      font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-      padding: 18px; cursor: pointer;
-      transition: background .2s, transform .15s; margin-top: 8px;
-    }
-    .form-submit:hover { background: var(--blue-mid); color: var(--white); transform: translateY(-2px); }
+/* ══════════════════════════════════════
+   CONTACT
+══════════════════════════════════════ */
+.contact{background:var(--white)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  margin-top:56px;align-items:start;
+}
+.contact-info-block{display:flex;flex-direction:column;gap:24px}
+.contact-intro{
+  font-size:1rem;line-height:1.8;color:var(--muted);
+  border-left:3px solid var(--blue);padding-left:20px;
+}
+.contact-method{display:flex;align-items:center;gap:16px}
+.method-icon{
+  width:46px;height:46px;border-radius:6px;
+  border:1.5px solid var(--stone);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s,background .2s;
+}
+.contact-method:hover .method-icon{border-color:var(--blue);background:var(--blue-pale)}
+.method-icon svg{width:18px;height:18px;stroke:var(--blue-deep)}
+.method-text{}
+.method-label{
+  font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:2px;
+}
+.method-val{
+  font-size:.95rem;font-weight:500;color:var(--ink);
+}
+.method-val a{color:inherit;text-decoration:none;transition:color .2s}
+.method-val a:hover{color:var(--blue-deep)}
 
-    /* ─── FOOTER ──────────────────────────────────────────── */
-    footer {
-      background: var(--charcoal);
-      border-top: 1px solid rgba(255,255,255,.07);
-      padding: 44px 32px;
-    }
-    .footer-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 20px;
-    }
-    .footer-brand {
-      font-family: var(--font-display); font-size: 1.25rem;
-      font-weight: 700; color: var(--white); letter-spacing: .03em;
-    }
-    .footer-brand span { color: var(--blue-light); }
-    .footer-legal {
-      font-size: .8rem; color: rgba(255,255,255,.3);
-      line-height: 1.6;
-    }
-    .footer-states {
-      font-size: .75rem; font-weight: 600; letter-spacing: .1em;
-      text-transform: uppercase; color: rgba(255,255,255,.3);
-    }
+/* Form */
+.contact-form{
+  background:var(--off);border-radius:10px;
+  padding:44px;border:1px solid var(--stone);
+}
+.form-title{
+  font-family:var(--cond);font-size:1.4rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:28px;
+}
+.f-row{margin-bottom:18px}
+.f-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+label{
+  display:block;font-size:.68rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:7px;
+}
+input,textarea,select{
+  width:100%;background:var(--white);
+  border:1.5px solid var(--stone);border-radius:4px;
+  padding:13px 16px;font-family:var(--sans);font-size:.9rem;
+  color:var(--ink);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  -webkit-appearance:none;
+}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.55}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(59,165,216,.12);
+}
+textarea{resize:vertical;min-height:120px}
+select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A909E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+select option{color:var(--ink)}
+.f-submit{
+  width:100%;background:var(--ink);color:var(--white);border:none;
+  border-radius:4px;font-family:var(--cond);font-size:1rem;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:18px;cursor:pointer;margin-top:6px;
+  transition:background .2s,transform .15s;
+}
+.f-submit:hover{background:var(--blue-deep);transform:translateY(-1px)}
 
-    /* ─── MOBILE ──────────────────────────────────────────── */
-    .hamburger {
-      display: none; background: none; border: none; cursor: pointer;
-      padding: 8px; gap: 6px; flex-direction: column;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--white); transition: all .25s;
-    }
-    .nav-mobile { display: none; }
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:44px 40px;
+}
+.footer-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:24px;
+}
+.footer-brand{
+  font-family:var(--cond);font-size:1.1rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--white);
+}
+.footer-brand span{color:var(--blue)}
+.footer-slogan{
+  font-family:var(--serif);font-style:italic;
+  font-size:.95rem;color:rgba(255,255,255,.28);
+}
+.footer-legal{
+  font-size:.75rem;color:rgba(255,255,255,.25);
+  line-height:1.6;text-align:right;
+}
 
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .hero-stats { order: -1; }
-      .stat-row { grid-template-columns: 1fr 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-badge { bottom: 16px; right: 16px; }
-      .why-grid { grid-template-columns: 1fr 1fr; }
-      .coverage-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .form-row-2 { grid-template-columns: 1fr; }
-      .contact-form { padding: 28px; }
-    }
-    @media (max-width: 600px) {
-      :root { --section-pad: 64px; }
-      .hero-title { font-size: 3rem; }
-      .why-grid { grid-template-columns: 1fr; }
-      .hero-inner { padding: 48px 20px; }
-      section { padding: var(--section-pad) 20px; }
-    }
-  </style>
+/* ══════════════════════════════════════
+   MOBILE
+══════════════════════════════════════ */
+@media(max-width:1024px){
+  .nav-wrap{grid-template-columns:1fr auto;padding:0 28px}
+  .nav-center,.nav-phone{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;padding-top:100px;padding-bottom:60px}
+  .hero-card{max-width:480px}
+  .services-head{grid-template-columns:1fr}
+  .services-head-right{align-items:flex-start}
+  .services-cta-note{text-align:left}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:60px}
+  .about-badge{bottom:16px;left:16px}
+  .about-cert{right:16px}
+  .process-row{grid-template-columns:1fr 1fr}
+  .process-step::after{display:none}
+  .coverage-grid{grid-template-columns:1fr}
+  .coverage-aside{position:static}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:640px){
+  section{padding:72px 24px}
+  .hero-inner{padding:90px 24px 48px}
+  .hero-bar-inner{padding:0 24px}
+  .services-grid{grid-template-columns:1fr}
+  .process-row{grid-template-columns:1fr}
+  .contact-form{padding:28px}
+  .trust{padding:48px 24px}
+  .trust-inner{flex-direction:column}
+  .trust-attr{text-align:left}
+  footer{padding:36px 24px}
+  .f-row-2{grid-template-columns:1fr}
+  .nav-wrap{padding:0 20px}
+}
+
+/* Mobile nav drawer */
+#mob-nav{
+  display:none;
+  background:rgba(7,17,26,.98);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:24px 28px 32px;
+}
+#mob-nav.open{display:flex;flex-direction:column;gap:4px}
+#mob-nav a{
+  font-family:var(--cond);font-size:1.1rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);text-decoration:none;
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05);
+  transition:color .2s;
+}
+#mob-nav a:last-child{
+  border:none;margin-top:12px;
+  background:var(--blue);color:var(--ink);
+  padding:14px 24px;border-radius:4px;text-align:center;
+}
+#mob-nav a:hover{color:var(--white)}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="#">
-      <img src="AlcantarDrywall.png" alt="Alcantar Drywall LLC Logo" onerror="this.style.display='none'"/>
-      <div class="nav-logo-text">Alcantar <span>Drywall</span></div>
+<!-- ═══ HEADER ════════════════════════════ -->
+<header id="site-header">
+  <div class="nav-wrap">
+    <!-- Left: Logo -->
+    <a class="nav-left" href="#">
+      <div class="logo-mark">
+        <img src="AlcantarDrywall.png" alt="Alcantar Drywall LLC"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="logo-mark-fallback" style="display:none">AD</div>
+      </div>
+      <div class="nav-brand">
+        <div class="nav-brand-name">Alcantar Drywall</div>
+        <div class="nav-brand-tag">Licensed Subcontractor · LLC</div>
+      </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#coverage">Coverage</a></li>
-      <li><a href="#contact" class="nav-cta">Free Estimate</a></li>
-    </ul>
-    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
+    <!-- Center: Links -->
+    <nav class="nav-center">
+      <a class="nav-link" href="#services">Services</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#coverage">Coverage</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+    <!-- Right: Phone + CTA -->
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:5083089321">508-308-9321</a>
+      <a class="nav-btn" href="#contact">Free Estimate</a>
+      <button class="hamburger" aria-label="Open menu" onclick="document.getElementById('mob-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
-  <div id="mobileMenu" style="display:none; background:#111; padding:20px 32px; border-top:1px solid rgba(255,255,255,.07);">
-    <ul style="list-style:none; display:flex; flex-direction:column; gap:18px;">
-      <li><a href="#services" style="color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;" onclick="document.getElementById('mobileMenu').style.display='none'">Services</a></li>
-      <li><a href="#about" style="color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;" onclick="document.getElementById('mobileMenu').style.display='none'">About</a></li>
-      <li><a href="#coverage" style="color:rgba(255,255,255,.8);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;" onclick="document.getElementById('mobileMenu').style.display='none'">Coverage</a></li>
-      <li><a href="#contact" style="color:var(--blue-light);text-decoration:none;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;" onclick="document.getElementById('mobileMenu').style.display='none'">Free Estimate →</a></li>
-    </ul>
+  <!-- Mobile nav -->
+  <div id="mob-nav">
+    <a href="#services" onclick="this.closest('#mob-nav').classList.remove('open')">Services</a>
+    <a href="#about" onclick="this.closest('#mob-nav').classList.remove('open')">About</a>
+    <a href="#coverage" onclick="this.closest('#mob-nav').classList.remove('open')">Coverage</a>
+    <a href="#contact" onclick="this.closest('#mob-nav').classList.remove('open')">Get a Free Estimate →</a>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
+<!-- ═══ HERO ══════════════════════════════ -->
 <section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-arc"></div>
+  <div class="hero-bloom"></div>
+
   <div class="hero-inner">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Licensed Drywall Subcontractor — New England</p>
-      <h1 class="hero-title">Built<br/><em>Flat.</em><br/>Finished<br/>Right.</h1>
+    <!-- Left copy -->
+    <div class="hero-left">
+      <p class="hero-eyebrow">Alcantar Drywall LLC · Est. New England</p>
+      <h1 class="hero-headline">
+        The Finish<br/>Your Home<br/><em>Deserves.</em>
+      </h1>
+      <p class="hero-sub">Professional Drywall · Since 2014</p>
+      <div class="hero-rule"></div>
       <p class="hero-desc">
-        Precision drywall installation and finishing for general contractors and developers across New England. Every board hung, every seam taped, every surface ready to paint.
+        Expert drywall installation, finishing, and repair for general contractors and homeowners across Massachusetts, New Hampshire, Rhode Island, and Connecticut. Built on ten years of showing up and doing it right.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get a Free Estimate →</a>
-        <a href="#services" class="btn-outline">Our Services</a>
+        <a href="#contact" class="btn-main">
+          Request a Free Estimate
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4-4 4M3 12h18"/></svg>
+        </a>
+        <a href="#services" class="btn-ghost">Our Services ↓</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-num">10+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">4</div>
-          <div class="stat-label">States Served</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Sub-Contractor</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">LLC</div>
-          <div class="stat-label">Fully Licensed</div>
-        </div>
+    <!-- Right card -->
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <div class="card-label">Owner &amp; Lead Contractor</div>
+        <div class="card-name">Antonio Alcantar</div>
+        <div class="card-role">Alcantar Drywall LLC · Licensed Subcontractor</div>
+      </div>
+      <div class="hero-card-body">
+        <ul class="stat-list">
+          <li>
+            <span class="s-label">Experience</span>
+            <span class="s-val blue">10+ Years</span>
+          </li>
+          <li>
+            <span class="s-label">Entity</span>
+            <span class="s-val">Licensed LLC</span>
+          </li>
+          <li>
+            <span class="s-label">Role</span>
+            <span class="s-val">Subcontractor</span>
+          </li>
+          <li>
+            <span class="s-label">Service Area</span>
+            <span class="s-val blue">MA · NH · RI · CT</span>
+          </li>
+          <li>
+            <span class="s-label">Phone</span>
+            <span class="s-val"><a href="tel:5083089321" style="color:inherit;text-decoration:none">508-308-9321</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom state strip -->
+  <div class="hero-bar">
+    <div class="hero-bar-inner">
+      <span class="bar-label">Serving</span>
+      <div class="bar-divider"></div>
+      <div class="bar-states">
+        <span class="bar-state">Massachusetts</span>
+        <span class="bar-state">New Hampshire</span>
+        <span class="bar-state">Rhode Island</span>
+        <span class="bar-state">Connecticut</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATES RIBBON -->
-<div class="states-ribbon">
-  <span class="states-ribbon-label">Service Area</span>
-  <div class="states-ribbon-states">
-    <span class="state-badge">Massachusetts</span>
-    <span class="state-badge">New Hampshire</span>
-    <span class="state-badge">Rhode Island</span>
-    <span class="state-badge">Connecticut</span>
-  </div>
-</div>
-
-<!-- SERVICES -->
+<!-- ═══ SERVICES ══════════════════════════ -->
 <section class="services" id="services">
-  <div class="section-inner">
-    <div class="services-header">
-      <p class="section-tag">What We Do</p>
-      <h2 class="section-title">Full-Scope<br/><em>Drywall Services</em></h2>
-      <p class="section-subtitle">From new construction framing to final finish coats — Alcantar Drywall delivers clean, level, paint-ready walls on schedule.</p>
+  <div class="wrap">
+    <div class="services-head">
+      <div>
+        <p class="eyebrow">What We Do</p>
+        <h2 class="section-title">Full-Scope<br/><em>Drywall Services</em></h2>
+        <p class="section-sub">From new construction to final finish coats — every scope delivered clean, level, and paint-ready.</p>
+      </div>
+      <div class="services-head-right">
+        <a href="#contact" class="btn-main">
+          Get a Quote
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="2" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4-4 4M3 12h18"/></svg>
+        </a>
+        <p class="services-cta-note">Free estimates · Fast turnaround</p>
+      </div>
     </div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">
-          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" stroke-linecap="round"/><line x1="3" y1="12" x2="21" y2="12" stroke-linecap="round"/><line x1="12" y1="3" x2="12" y2="21" stroke-linecap="round"/></svg>
+
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9" stroke-linecap="round"/><line x1="9" y1="3" x2="9" y2="21" stroke-linecap="round"/></svg>
         </div>
-        <div class="service-title">New Construction</div>
-        <div class="service-desc">Full drywall installation on new builds — commercial and residential. We coordinate directly with general contractors to keep your project on schedule.</div>
+        <div class="svc-title">New Construction</div>
+        <div class="svc-desc">Full drywall installation on new builds — residential and commercial. We work directly with GCs to stay on the critical path.</div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">
+
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">
           <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9" stroke-linecap="round"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="service-title">Finishing & Taping</div>
-        <div class="service-desc">Expert taping, mudding, and sanding to Level 4 and Level 5 finish. Seamless joints, feathered corners — zero telegraphing under paint or lighting.</div>
+        <div class="svc-title">Taping &amp; Finishing</div>
+        <div class="svc-desc">Level 4 and Level 5 finishes. Seamless joints, feathered corners — zero telegraphing under any paint or lighting condition.</div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke-linecap="round"/><path d="M9 9s1-1 3-1 3 1 3 1" stroke-linecap="round"/><path d="M9 15s1 1 3 1 3-1 3-1" stroke-linecap="round"/></svg>
+
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8" stroke-linecap="round"/></svg>
         </div>
-        <div class="service-title">Repair & Patching</div>
-        <div class="service-desc">Damage repair, hole patching, and texture matching that blends invisibly with existing surfaces. Done right the first time.</div>
+        <div class="svc-title">Repair &amp; Patching</div>
+        <div class="svc-desc">Damage repair, hole patching, and texture matching that blends invisibly with surrounding surfaces. Done right the first time.</div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">
+
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">
           <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M3 21h18M5 21V7l7-4 7 4v14" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21V12h6v9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="service-title">Remodels & Additions</div>
-        <div class="service-desc">Renovation drywall for additions, gut rehabs, and room conversions. We work clean, move fast, and leave the site ready for the next trade.</div>
+        <div class="svc-title">Remodels</div>
+        <div class="svc-desc">Renovation drywall for additions, gut rehabs, and room conversions. We work clean, move fast, and leave the site ready for the next trade.</div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v16H4z" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9h16M4 14h16M9 4v16M14 4v16" stroke-linecap="round"/></svg>
+
+      <div class="svc">
+        <div class="svc-num">05</div>
+        <div class="svc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="8" x2="21" y2="8" stroke-linecap="round"/></svg>
         </div>
-        <div class="service-title">Ceilings & Bulkheads</div>
-        <div class="service-desc">Flat ceilings, coffered details, soffits, and bulkheads hung plumb and level. We handle the complex geometry other crews avoid.</div>
+        <div class="svc-title">Ceilings &amp; Soffits</div>
+        <div class="svc-desc">Flat ceilings, coffered details, bulkheads, and soffits hung plumb and level. We handle the complex geometry that other crews avoid.</div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">
-          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+      <div class="svc">
+        <div class="svc-num">06</div>
+        <div class="svc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round"/><path d="M8 10h8M8 14h5" stroke-linecap="round"/></svg>
         </div>
-        <div class="service-title">Commercial Work</div>
-        <div class="service-desc">Office buildouts, retail, multi-family — we understand commercial timelines and scheduling. Experienced working alongside other trades on active job sites.</div>
+        <div class="svc-title">Commercial Work</div>
+        <div class="svc-desc">Office buildouts, retail, multi-family — we understand commercial timelines and how to coordinate with other active trades on site.</div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══ ABOUT ═════════════════════════════ -->
 <section class="about" id="about">
-  <div class="section-inner">
+  <div class="wrap">
     <div class="about-grid">
-      <div class="about-visual">
-        <div class="about-photo-wrap">
-          <div class="about-photo-placeholder">
+      <!-- Photo -->
+      <div class="about-photo">
+        <div class="about-photo-frame">
+          <div class="photo-placeholder">
             <svg fill="none" viewBox="0 0 24 24" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" stroke-linecap="round"/></svg>
-            <span>Your photo here</span>
+            <span>Add your photo here</span>
           </div>
         </div>
         <div class="about-badge">
-          <div class="about-badge-num">10+</div>
-          <div class="about-badge-text">Yrs in the<br/>Trade</div>
+          <div class="badge-num">10+</div>
+          <div class="badge-text">Years in<br/>the Trade</div>
+        </div>
+        <div class="about-cert">
+          <div class="cert-dot"></div>
+          <div class="cert-text">Licensed LLC<br/>Subcontractor</div>
         </div>
       </div>
+      <!-- Copy -->
       <div class="about-content">
-        <p class="section-tag">The Contractor</p>
+        <p class="eyebrow">The Contractor</p>
         <h2 class="section-title">Antonio<br/><em>Alcantar</em></h2>
-        <p class="about-name">Owner & Lead Contractor</p>
-        <p class="about-role">Alcantar Drywall LLC · Licensed Subcontractor</p>
-        <p class="about-text">
-          I started in the trades over a decade ago and built Alcantar Drywall LLC on a simple principle: show up on time, do the work right, and treat every general contractor like a long-term partner — because that's how you actually build a business.
+        <p class="about-owner-name">Owner &amp; Lead Contractor</p>
+        <p class="about-owner-role">Alcantar Drywall LLC</p>
+        <p class="about-copy">
+          I started in the trades over a decade ago and built Alcantar Drywall LLC on one principle: show up on time, do the work right, and treat every general contractor like a long-term partner.
         </p>
-        <p class="about-text">
-          As a subcontractor, I work directly with GCs and project managers across New England. No middlemen, no hassle — just a direct line to the person doing the work.
+        <p class="about-copy">
+          As a subcontractor, I work directly with GCs and project managers across New England. No middlemen, no crew lead you've never met — just a direct line to the person doing the work.
         </p>
         <hr class="about-divider"/>
-        <div class="about-traits">
+        <div class="trait-list">
           <div class="trait">
-            <div class="trait-dot"></div>
-            <div class="trait-text"><strong>Direct subcontractor relationship</strong> — you deal with the owner, not a crew lead you've never met.</div>
+            <div class="trait-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="trait-body">
+              <div class="trait-title">Owner-Operated</div>
+              <div class="trait-desc">Antonio is on every job. You get the same accountability on project one as on project twenty.</div>
+            </div>
           </div>
           <div class="trait">
-            <div class="trait-dot"></div>
-            <div class="trait-text"><strong>10+ years in the trade</strong> — residential, commercial, and multi-family across New England.</div>
+            <div class="trait-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="trait-body">
+              <div class="trait-title">Consistent Quality</div>
+              <div class="trait-desc">Clean installs, tight Level 4 &amp; 5 finishes, sites left ready for the next trade.</div>
+            </div>
           </div>
           <div class="trait">
-            <div class="trait-dot"></div>
-            <div class="trait-text"><strong>Consistent quality</strong> — clean installs, tight finishes, and sites left ready for the next trade.</div>
-          </div>
-          <div class="trait">
-            <div class="trait-dot"></div>
-            <div class="trait-text"><strong>Reliable communication</strong> — straightforward estimates, honest timelines, no surprises.</div>
+            <div class="trait-icon">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="trait-body">
+              <div class="trait-title">Clear Communication</div>
+              <div class="trait-desc">Honest estimates, realistic timelines, and a direct answer when you call.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -731,157 +998,167 @@
   </div>
 </section>
 
-<!-- WHY US -->
-<section class="why" id="why">
-  <div class="section-inner">
-    <p class="section-tag">Why Alcantar</p>
-    <h2 class="section-title">What Sets Us <em>Apart</em></h2>
-    <p class="section-subtitle">General contractors keep coming back because we make their jobs easier — not harder.</p>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-number">01</div>
-        <div class="why-title">On-Schedule Delivery</div>
-        <div class="why-desc">We understand that drywall is a critical-path trade. We give realistic timelines and we hit them — so the painters can start when they're supposed to.</div>
+<!-- ═══ PROCESS ═══════════════════════════ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="process-head">
+      <p class="eyebrow">How It Works</p>
+      <h2 class="section-title">Simple <em>Process,</em><br/>Zero Surprises</h2>
+      <p class="section-sub">Four steps from first call to finished walls — no guessing, no delays.</p>
+    </div>
+    <div class="process-row">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Reach Out</div>
+        <div class="step-desc">Call us or send your project details — scope, location, timeline. We respond fast.</div>
       </div>
-      <div class="why-card">
-        <div class="why-number">02</div>
-        <div class="why-title">Level 4 & 5 Finishes</div>
-        <div class="why-desc">Our taping and finishing work meets the highest standards. Whether it's under flat paint in a luxury unit or high-sheen in a commercial lobby — it holds up.</div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Free Estimate</div>
+        <div class="step-desc">We review your plans and deliver a detailed, itemized estimate with no fluff and no hidden costs.</div>
       </div>
-      <div class="why-card">
-        <div class="why-number">03</div>
-        <div class="why-title">Clean Job Sites</div>
-        <div class="why-desc">We cut, bag, and haul our own debris. The next trade walks into a room that's ready — not one that looks like a demo zone.</div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">We Get to Work</div>
+        <div class="step-desc">Antonio leads the crew on site. Clean work, coordinated with your other trades, on your schedule.</div>
       </div>
-      <div class="why-card">
-        <div class="why-number">04</div>
-        <div class="why-title">Owner-Operated</div>
-        <div class="why-desc">Antonio is on every job. You get the same quality and accountability on project one as you do on project twenty.</div>
-      </div>
-      <div class="why-card">
-        <div class="why-number">05</div>
-        <div class="why-title">Fast, Clear Estimates</div>
-        <div class="why-desc">No waiting a week for a number. We review your plans, ask the right questions, and turn around a detailed estimate quickly.</div>
-      </div>
-      <div class="why-card">
-        <div class="why-number">06</div>
-        <div class="why-title">New England Coverage</div>
-        <div class="why-desc">We mobilize across MA, NH, RI, and CT — giving your firm one reliable drywall sub regardless of where in New England the project lands.</div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Paint-Ready</div>
+        <div class="step-desc">We leave every surface level, finished, and ready for the painter — debris gone, job done right.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COVERAGE -->
+<!-- ═══ TRUST BAR ═════════════════════════ -->
+<div class="trust">
+  <div class="trust-inner">
+    <p class="trust-quote">"Reliable, clean, and the finish work is as good as anyone in New England. Antonio is who we call first."</p>
+    <div class="trust-attr">
+      <div class="trust-attr-name">General Contractor</div>
+      <div class="trust-attr-role">Greater Boston, MA</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ COVERAGE ══════════════════════════ -->
 <section class="coverage" id="coverage">
-  <div class="section-inner">
-    <p class="section-tag">Service Area</p>
+  <div class="wrap">
+    <p class="eyebrow">Service Area</p>
     <h2 class="section-title">Where We <em>Work</em></h2>
-    <p class="section-subtitle">Based in New England and ready to mobilize across all four states. One subcontractor, wherever your next project is.</p>
+    <p class="section-sub">Based in New England — one reliable subcontractor across four states.</p>
     <div class="coverage-grid">
-      <div class="coverage-states">
-        <div class="coverage-state">
-          <div class="coverage-state-abbr">MA</div>
-          <div class="coverage-state-info">
-            <div class="coverage-state-name">Massachusetts</div>
-            <div class="coverage-state-desc">Home base — full coverage statewide including Greater Boston, MetroWest, Worcester, and the South Shore.</div>
+      <div class="states-cards">
+        <div class="state-card">
+          <div class="state-abbr">MA</div>
+          <div class="state-info">
+            <div class="state-name">Massachusetts</div>
+            <div class="state-note">Home base — full statewide coverage including Greater Boston, MetroWest, Worcester, and the South Shore.</div>
           </div>
         </div>
-        <div class="coverage-state">
-          <div class="coverage-state-abbr">NH</div>
-          <div class="coverage-state-info">
-            <div class="coverage-state-name">New Hampshire</div>
-            <div class="coverage-state-desc">Available for projects throughout southern and central NH, including Manchester, Nashua, and the Seacoast.</div>
+        <div class="state-card">
+          <div class="state-abbr">NH</div>
+          <div class="state-info">
+            <div class="state-name">New Hampshire</div>
+            <div class="state-note">Available throughout southern and central NH — Manchester, Nashua, Concord, and the Seacoast.</div>
           </div>
         </div>
-        <div class="coverage-state">
-          <div class="coverage-state-abbr">RI</div>
-          <div class="coverage-state-info">
-            <div class="coverage-state-name">Rhode Island</div>
-            <div class="coverage-state-desc">Serving Providence, Newport, and surrounding areas. Compact state, full availability.</div>
+        <div class="state-card">
+          <div class="state-abbr">RI</div>
+          <div class="state-info">
+            <div class="state-name">Rhode Island</div>
+            <div class="state-note">Serving Providence, Newport, and surrounding areas. Compact state, full availability.</div>
           </div>
         </div>
-        <div class="coverage-state">
-          <div class="coverage-state-abbr">CT</div>
-          <div class="coverage-state-info">
-            <div class="coverage-state-name">Connecticut</div>
-            <div class="coverage-state-desc">Available for projects throughout Connecticut, particularly northern CT and the Hartford corridor.</div>
+        <div class="state-card">
+          <div class="state-abbr">CT</div>
+          <div class="state-info">
+            <div class="state-name">Connecticut</div>
+            <div class="state-note">Available across Connecticut — particularly northern CT and the Hartford corridor.</div>
           </div>
         </div>
       </div>
-      <div class="coverage-note">
-        <div class="coverage-note-title">Working With Us Across State Lines</div>
-        <p>Alcantar Drywall LLC operates as a licensed subcontractor across New England. If your firm runs projects in multiple states, we're the drywall sub you only have to vet once.</p>
-        <p>We're accustomed to coordinating directly with superintendents, project managers, and GC office staff — whatever your workflow is, we adapt to it.</p>
-        <p>Not sure if we cover your project location? Call or send a message and we'll let you know right away.</p>
-        <br/>
-        <a href="#contact" class="btn-primary" style="display:inline-flex;">Check Your Area →</a>
+      <div class="coverage-aside">
+        <div class="aside-title">One Sub,<br/>Wherever Your<br/>Project Lands</div>
+        <p class="aside-body">If your firm runs projects across New England, Alcantar Drywall is the drywall subcontractor you vet once and call every time — regardless of which state the job is in.</p>
+        <p class="aside-body">We adapt to your workflow, coordinate with your supers, and keep your project on track.</p>
+        <a href="#contact" class="aside-cta">Request a Bid →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ═══ CONTACT ═══════════════════════════ -->
 <section class="contact" id="contact">
-  <div class="section-inner">
-    <p class="section-tag">Get In Touch</p>
+  <div class="wrap">
+    <p class="eyebrow">Get In Touch</p>
     <h2 class="section-title">Request a <em>Free Estimate</em></h2>
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info-block">
         <p class="contact-intro">
-          Ready to bid your next project? Send us the details and we'll get back to you with a clear, itemized estimate. GCs, developers, and project managers welcome.
+          GCs, developers, and homeowners — send us the details and we'll respond with a clear, itemized estimate. No pressure, no obligation.
         </p>
-        <div class="contact-methods">
-          <div class="contact-method">
-            <div class="contact-method-icon">
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 7.18 2 2 0 015 5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 12a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <div class="contact-method-label">Phone</div>
-              <div class="contact-method-value"><a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a></div>
-            </div>
+        <div class="contact-method">
+          <div class="method-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 7.18 2 2 0 015 5h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L9.09 12a16 16 0 006.91 6.91l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="contact-method">
-            <div class="contact-method-icon">
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div>
-              <div class="contact-method-label">Email</div>
-              <div class="contact-method-value"><a href="mailto:info@alcantardrywall.com">info@alcantardrywall.com</a></div>
-            </div>
+          <div class="method-text">
+            <div class="method-label">Phone</div>
+            <div class="method-val"><a href="tel:5083089321">508-308-9321</a></div>
           </div>
-          <div class="contact-method">
-            <div class="contact-method-icon">
-              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <div class="contact-method-label">Service Area</div>
-              <div class="contact-method-value">MA · NH · RI · CT</div>
-            </div>
+        </div>
+        <div class="contact-method">
+          <div class="method-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="method-text">
+            <div class="method-label">Email</div>
+            <div class="method-val"><a href="mailto:antonio@alcantardrywall.com">antonio@alcantardrywall.com</a></div>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="method-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="method-text">
+            <div class="method-label">Service Area</div>
+            <div class="method-val">MA · NH · RI · CT</div>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="method-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="method-text">
+            <div class="method-label">Response Time</div>
+            <div class="method-val">Within 24 hours</div>
           </div>
         </div>
       </div>
+      <!-- Form -->
       <div class="contact-form">
-        <form action="mailto:info@alcantardrywall.com" method="post" enctype="text/plain">
-          <div class="form-row-2">
-            <div class="form-row" style="margin-bottom:0">
-              <label for="name">Your Name</label>
+        <div class="form-title">Tell Us About Your Project</div>
+        <form action="mailto:antonio@alcantardrywall.com" method="post" enctype="text/plain">
+          <div class="f-row-2">
+            <div>
+              <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="John Smith" required/>
             </div>
-            <div class="form-row" style="margin-bottom:0">
+            <div>
               <label for="company">Company</label>
               <input type="text" id="company" name="company" placeholder="Smith Construction LLC"/>
             </div>
           </div>
-          <div class="form-row-2">
-            <div class="form-row" style="margin-bottom:0">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" placeholder="(617) 555-0100"/>
+          <div class="f-row-2">
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(508) 555-0100" required/>
             </div>
-            <div class="form-row" style="margin-bottom:0">
+            <div>
               <label for="state">Project State</label>
               <select id="state" name="state">
-                <option value="">Select state…</option>
+                <option value="">Select…</option>
                 <option>Massachusetts</option>
                 <option>New Hampshire</option>
                 <option>Rhode Island</option>
@@ -889,10 +1166,10 @@
               </select>
             </div>
           </div>
-          <div class="form-row">
-            <label for="project">Project Type</label>
-            <select id="project" name="project">
-              <option value="">Select type…</option>
+          <div class="f-row">
+            <label for="type">Project Type</label>
+            <select id="type" name="type">
+              <option value="">Select…</option>
               <option>New Construction – Residential</option>
               <option>New Construction – Commercial</option>
               <option>Remodel / Renovation</option>
@@ -901,40 +1178,37 @@
               <option>Other</option>
             </select>
           </div>
-          <div class="form-row">
+          <div class="f-row">
             <label for="message">Project Details</label>
-            <textarea id="message" name="message" placeholder="Square footage, scope, timeline, location…"></textarea>
+            <textarea id="message" name="message" placeholder="Square footage, scope of work, target start date, location…"></textarea>
           </div>
-          <button type="submit" class="form-submit">Send Estimate Request →</button>
+          <button type="submit" class="f-submit">Send My Estimate Request →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ════════════════════════════ -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">Alcantar <span>Drywall</span> LLC</div>
+    <div>
+      <div class="footer-brand">Alcantar <span>Drywall</span> LLC</div>
+      <div class="footer-slogan">The Finish Your Home Deserves.</div>
+    </div>
     <div class="footer-legal">
-      © 2025 Alcantar Drywall LLC · All rights reserved<br/>
+      © 2025 Alcantar Drywall LLC · All Rights Reserved<br/>
       Licensed Drywall Subcontractor · New England
     </div>
-    <div class="footer-states">Serving MA · NH · RI · CT</div>
   </div>
 </footer>
 
 <script>
-  // Minimal mobile menu toggle
-  const ham = document.querySelector('.hamburger');
-  const menu = document.getElementById('mobileMenu');
-  if (ham && menu) {
-    ham.addEventListener('click', () => {
-      const open = menu.style.display === 'flex';
-      menu.style.display = open ? 'none' : 'flex';
-      menu.style.flexDirection = 'column';
-    });
-  }
+  // Sticky nav background on scroll
+  const hdr = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    hdr.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive: true});
 </script>
 
 </body>
